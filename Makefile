@@ -10,7 +10,7 @@ CFLAGS_TARGET = -DSTM32F1 -I$(LIBOPENCM3_DIR)/include -mcpu=cortex-m3 -mfix-cort
 CFLAGS_WARN = -Wall -Wextra -Wmissing-prototypes -Wredundant-decls -Wshadow -Wstrict-prototypes -Wundef -Wwrite-strings -pedantic
 CFLAGS = $(CFLAGS_LANG) $(CFLAGS_OPT) $(CFLAGS_TARGET) $(CFLAGS_WARN)
 
-LDFLAGS_OPT = -Wl,-O1 -Wl,--as-needed -Wl,--gc-sections
+LDFLAGS_OPT = -Wl,--as-needed -Wl,--gc-sections -Wl,-O1
 LDFLAGS_TARGET = -L$(LIBOPENCM3_DIR)/lib -Tstm32/f1/stm32f103x8.ld -nostdlib -static
 LDFLAGS = $(LDFLAGS_OPT) $(LDFLAGS_TARGET)
 
