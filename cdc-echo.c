@@ -95,7 +95,7 @@ static const struct usb_interface_descriptor usbCdcIntDesc[] = {
 	{
 		.bLength = USB_DT_INTERFACE_SIZE,
 		.bDescriptorType = USB_DT_INTERFACE,
-		.bInterfaceNumber = 0,
+		.bInterfaceNumber = INT_CDC,
 		.bAlternateSetting = 0,
 		.bNumEndpoints = ARRAY_LEN(usbCdcEndDesc),
 		.bInterfaceClass = USB_CLASS_CDC,
@@ -129,7 +129,7 @@ static const struct usb_interface_descriptor usbDataIntDesc[] = {
 	{
 		.bLength = USB_DT_INTERFACE_SIZE,
 		.bDescriptorType = USB_DT_INTERFACE,
-		.bInterfaceNumber = 1,
+		.bInterfaceNumber = INT_DATA,
 		.bAlternateSetting = 0,
 		.bNumEndpoints = ARRAY_LEN(usbDataEndDesc),
 		.bInterfaceClass = USB_CLASS_DATA,
@@ -227,7 +227,7 @@ static void usbSetConfig (usbd_device *usbdDev, uint16_t wValue) {
 
 	setupEp(usbdDev, &usbDataEndDesc[DATA_END_OUT], usbDataOut);
 	setupEp(usbdDev, &usbDataEndDesc[DATA_END_IN], usbDataIn);
-	setupEp(usbdDev, &usbCdcEndDesc[0], NULL);
+	setupEp(usbdDev, &usbCdcEndDesc[CDC_END_CONTROL], NULL);
 
 	usbdWritable = true;
 }
